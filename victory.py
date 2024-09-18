@@ -1,5 +1,25 @@
 import random
 
+
+def month_to_text(month):
+    months = {
+        1: "Января",
+        2: "Февраля",
+        3: "Марта",
+        4: "Апреля",
+        5: "Мая",
+        6: "Июня",
+        7: "Июля",
+        8: "Августа",
+        9: "Сентября",
+        10: "Октября",
+        11: "Ноября",
+        12: "Декабря"
+    }
+    
+    return months.get(month, "Некорректный номер месяца")
+
+
 # Список известных людей и их даты рождения
 famous_people = {
     "А.С. Пушкин": "06.06.1799",
@@ -28,7 +48,7 @@ for person, birth_date in selected_people:
         correct_answers += 1
     else:
         day, month, year = birth_date.split('.')
-        print(f"Неверно! Правильный ответ: {int(day)}-{month_to_text(month)}-{year} года")
+        print(f"Неверно! Правильный ответ: {int(day)}-{month_to_text(int(month))}-{year} года")
 
 # Подсчет правильных и неправильных ответов
 wrong_answers = total_questions - correct_answers
@@ -40,6 +60,7 @@ while True:
     play_again = input("\nХотите начать сначала? (да/нет): ").lower()
     if play_again == "да":
         # Повторить викторину
-    elif play_again == "нет":
+        continue
+    else:
         print("Игра завершена.")
         break
